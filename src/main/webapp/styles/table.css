@@ -1,0 +1,8 @@
+
+th { text-align: center; font-weight: bold; vertical-align: baseline }
+
+td { vertical-align: middle  }
+
+table  { border-collapse: collapse; background-color: #ffffff }
+
+.eliminar {background-color: red}

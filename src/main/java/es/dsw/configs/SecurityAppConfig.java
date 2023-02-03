@@ -1,8 +1,6 @@
 package es.dsw.configs;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
@@ -11,9 +9,7 @@ import org.springframework.security.authentication.AuthenticationEventPublisher;
 import org.springframework.security.authentication.DefaultAuthenticationEventPublisher;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -103,10 +99,7 @@ public class SecurityAppConfig {
 	    	 		.regexMatchers("/bootstrap/*.*")
 	    	 			.permitAll() 
 	        	 	.regexMatchers("/ayuda")
-	    	 			.permitAll() 
-	    	 		.antMatchers("/admin/**").hasRole("admin")
-	    	 		.antMatchers("/commercial/**").hasRole("commercial")
-	    	 		.antMatchers("/basicUser/**").hasRole("basicUser")
+	    	 			.permitAll()
 	    	 		.anyRequest()
 	    	 			.authenticated() //Configuración para el proceso de autenticación de usuario
 	    	 				.and()

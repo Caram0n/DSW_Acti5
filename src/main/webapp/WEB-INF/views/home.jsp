@@ -7,6 +7,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
 <title>EL RINCÓN DEL CINE - Gestión</title>
     <link href="./styles/home.css" rel="stylesheet" id="bootstrap-css">
     <link href="./bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -33,7 +35,7 @@
   
     <ul class="nav flex-column bg-white mb-0">
       <li class="nav-item">
-            <a href="#" class="nav-link text-dark font-italic bg-light">
+            <a href="./" class="nav-link text-dark font-italic bg-light" >
                       <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
                       Mi Perfil
                   </a>
@@ -146,10 +148,61 @@
           </button>
         </div>
         <div class="modal-body">
-          [Formulario de recogida de datos]
+			<form:form id="newFilmForm" method="POST" action="#">
+				<div class="form-group">
+					<label>Título</label>
+					<input type="text" id="formTitulo">
+				</div>
+				<div class="form-group">
+					<label>Sinopsis</label>
+					<input type="text" id="formSinopsis">
+				</div>
+					<div class="form-group">
+					<label>Género</label>
+					<select name="genero" id="formGenero">
+						<c:forEach begin="0" step="1" items="${Generos}" var="item">
+							<option value=${item.getIdgenre_gf() }>${item.getGenre_gf()}</option>
+						</c:forEach>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Director</label>
+					<input type="text" id="formDirector">
+				</div>
+				<div class="form-group">
+					<label>Reparto</label>
+					<input type="text" id="formReparto">
+				</div>
+				<div class="form-group">
+					<label>Año</label>
+					<input type="number" id="formAnyo">
+				</div>
+				<div class="form-group">
+					<label>Fecha del estreno</label>
+					<input type="date" id="formEstreno">
+				</div>
+				<div class="form-group">
+					<label>Distribuidor</label>
+					<select name="distribuidor" id="formDistribuidor">
+						<c:forEach begin="0" step="1" items="${Distribuidores}" var="item">
+							<option value=${item.getIdproducer_pf() }>${item.getProducer_pf()}</option>
+						</c:forEach>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>País</label>
+					<select name="pais" id="formPais">
+						<c:forEach begin="0" step="1" items="${Paises}" var="item">
+							<option value=${item.getIdcountry_cf() }>${item.getCountry_cf()}</option>
+						</c:forEach>
+					</select>
+				   
+				</div>
+			</form:form>
         </div>
+        <div id="error"></div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrarForm">Cerrar</button>
           <button id ="GuardarPelicula" type="button" class="btn btn-dark">Guardar</button>
         </div>
       </div>
